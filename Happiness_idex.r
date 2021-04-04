@@ -14,4 +14,6 @@ df_2018%>%
 select("Country or region", "Overall rank", "Score", "GDP per capita", "Social support", "Healthy life expectancy", "Freedom to make life choices", "Perceptions of corruption", "Generosity") -> df_4
 df_2019%>%
 select("Country or region", "Overall rank", "Score", "GDP per capita", "Social support", "Healthy life expectancy", "Freedom to make life choices", "Perceptions of corruption", "Generosity") -> df_5
-df_1
+
+
+
