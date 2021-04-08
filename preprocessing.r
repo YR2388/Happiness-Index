@@ -29,7 +29,6 @@ df_2019%>%
 dplyr::select('Country','Happiness score','GDP per capita','Social support','Healthy life expectancy','Freedom to make life choices','Generosity','Perceptions of corruption')%>%
 mutate(continent = continent_2019) -> df_19
 
-
 #Let's do the same assignment to the rest dataframe
 Na_position_19 <- which(is.na(df_19$continent), arr.ind = FALSE, useNames = TRUE)
 df_19$Country[Na_position_19] -> Na_country_name_19
