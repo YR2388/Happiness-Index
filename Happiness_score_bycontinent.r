@@ -18,5 +18,11 @@ pivot_longer(cols = !measure1 ,names_to = "measure2",values_to = "cor_value") ->
 cor_table%>%
 ggplot(aes(x = measure1, y = measure2, fill = cor_value)) +
 geom_tile()
-
+#Template for map graph
+library(RColorBrewer)
+library(rworldmap)
+df_20 %>%
+  select('Country', "Happiness score") -> df_map
+worldmap <- joinCountryData2Map(df_map, nameJoinColumn = "Country", joinCode= "NAME")
+mapCountryData(worldmap, nameColumnToPlot = "Happiness score")
 
