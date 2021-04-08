@@ -15,7 +15,7 @@ continent_2020 <- countrycode(df_2020$Country, 'country.name', 'continent')
 #..Also add the a new column to the dataframe called 'continent'.
 df_2016%>%
 dplyr::select('Country','Happiness score','GDP per capita','Social support','Healthy life expectancy','Freedom to make life choices','Generosity','Perceptions of corruption')%>%
-mutate(contient = continent_2016) -> df_16
+mutate(continent = continent_2016) -> df_16
 
 #..Do the same for 2017 to 2020 dataframe
 #..2017
@@ -60,4 +60,11 @@ write.csv(df_17, 'df_17.csv')
 write.csv(df_18, 'df_18.csv')
 write.csv(df_19, 'df_19.csv')
 write.csv(df_20, 'df_20.csv')
+
+#Combine dataframe from 2016 to 2019
+
+df1 <- data.frame(df_16, df_17, df_18, df_19)
+
+
+head(df1)
 
