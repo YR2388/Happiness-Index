@@ -3,14 +3,12 @@ df_2016 <- read_csv("2016.csv")
 df_2017 <- read_csv("2017.csv")
 df_2018 <- read_csv("2018.csv")
 df_2019 <- read_csv("2019.csv")
-df_2020 <- read_csv("2020.csv")
 library(countrycode)
 #add 'continent' as a new factor to our dataframe
 continent_2016 <- countrycode(df_2016$Country, 'country.name', 'continent')
 continent_2017 <- countrycode(df_2017$Country, 'country.name', 'continent')
 continent_2018 <- countrycode(df_2018$Country, 'country.name', 'continent')
 continent_2019 <- countrycode(df_2019$Country, 'country.name', 'continent')
-continent_2020 <- countrycode(df_2020$Country, 'country.name', 'continent')
 #Select the six factors along with coresponding country name and their happiness score.
 #..Also add the a new column to the dataframe called 'continent'.
 df_2016%>%
@@ -30,17 +28,7 @@ mutate(continent = continent_2018) -> df_18
 df_2019%>%
 dplyr::select('Country','Happiness score','GDP per capita','Social support','Healthy life expectancy','Freedom to make life choices','Generosity','Perceptions of corruption')%>%
 mutate(continent = continent_2019) -> df_19
-#..2020
-df_2020%>%
-dplyr::select('Country','Happiness score','Logged GDP per capita','Social support','Healthy life expectancy','Freedom to make life choices','Generosity','Perceptions of corruption')%>%
-mutate(continent = continent_2020) -> df_20
 
-#..check Missing value 
-Na_position <- which(is.na(df_20$continent), arr.ind = FALSE, useNames = TRUE)
-df_20$Country[Na_position] -> Na_country_name
-#Now we get that Kosovo doesn't have a continent assigned 
-#We assign a continent to Kosovo
-df_20$continent[Na_position] <- 'Europe'
 
 #Let's do the same assignment to the rest dataframe
 Na_position_19 <- which(is.na(df_19$continent), arr.ind = FALSE, useNames = TRUE)
@@ -59,5 +47,4 @@ write.csv(df_16, 'df_16.csv')
 write.csv(df_17, 'df_17.csv')
 write.csv(df_18, 'df_18.csv')
 write.csv(df_19, 'df_19.csv')
-write.csv(df_20, 'df_20.csv')
 
